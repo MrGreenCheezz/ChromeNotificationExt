@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Stpk auto checker and notifications",
+  "version": "2.0",
+  "permissions": ["notifications", "activeTab", "tabs", "scripting", "cookies"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "test.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "test.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["bell.mp3"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}
